@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CabangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\KaryawanController;
@@ -96,8 +97,23 @@ Route::middleware(['auth:user'])->group(function () {
     Route::get('/presensi/{id}/batalkanizinsakit', [PresensiController::class, 'batalkanizinsakit']);
 
 
+    //Cabang
+    Route::get('/cabang', [CabangController::class, 'index']);
+    Route::post('/cabang/store', [CabangController::class, 'store']);
+    Route::post('/cabang/edit', [CabangController::class, 'edit']);
+    Route::post('/cabang/update', [CabangController::class, 'update']);
+    Route::post('/cabang/{kode_cabang}/delete', [CabangController::class, 'delete']);
+
     //Konfigurasi
 
     Route::get('/konfigurasi/lokasikantor', [KonfigurasiController::class, 'lokasikantor']);
     Route::post('/konfigurasi/updatelokasikantor', [KonfigurasiController::class, 'updatelokasikantor']);
+
+    Route::get('/konfigurasi/jamkerja', [KonfigurasiController::class, 'jamkerja']);
+    Route::post('/konfigurasi/storejamkerja', [KonfigurasiController::class, 'storejamkerja']);
+    Route::post('/konfigurasi/editjamkerja', [KonfigurasiController::class, 'editjamkerja']);
+    Route::post('/konfigurasi/updatejamkerja', [KonfigurasiController::class, 'updatejamkerja']);
+    Route::get('/konfigurasi/{nik}/setjamkerja', [KonfigurasiController::class, 'setjamkerja']);
+
+    Route::get('/storefrommachine', [PresensiController::class, 'storefrommachine']);
 });

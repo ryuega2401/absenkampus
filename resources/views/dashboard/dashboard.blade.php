@@ -1,7 +1,24 @@
 @extends('layouts.presensi')
 @section('content')
+<style>
+    .logout {
+        position: absolute;
+        color: white;
+        font-size: 30px;
+        text-decoration: none;
+        right: 8px;
+    }
 
+    .logout:hover {
+        color: white;
+
+    }
+
+</style>
 <div class="section" id="user-section">
+    <a href="/proseslogout" class="logout">
+        <ion-icon name="exit-outline"></ion-icon>
+    </a>
     <div id="user-detail">
         <div class="avatar">
             @if(!empty(Auth::guard('karyawan')->user()->foto))
@@ -16,6 +33,7 @@
         <div id="user-info">
             <h2 id="user-name">{{ Auth::guard('karyawan')->user()->nama_lengkap }}</h2>
             <span id="user-role">{{ Auth::guard('karyawan')->user()->jabatan }}</span>
+            <span id="user-role">({{ Auth::guard('karyawan')->user()->kode_cabang }})</span>
         </div>
     </div>
 </div>
