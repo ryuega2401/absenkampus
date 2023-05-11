@@ -97,7 +97,7 @@
                             <div class="iconpresence">
                                 @if ($presensihariini != null)
                                 @php
-                                $path = Storage::url('uploads/absensi/'.$presensihariini->foto_in);
+                                $path = Storage::url('/uploads/absensi/'.$presensihariini->foto_in);
                                 @endphp
                                 <img src="{{ url($path) }}" alt="" class="imaged w48">
                                 @else
